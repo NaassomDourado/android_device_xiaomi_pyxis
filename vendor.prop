@@ -19,3 +19,6 @@ ro.vendor.audio.soundtrigger.lowpower=false
 # NFC
 ro.se.type=HCE,UICC
 ro.vendor.nfc.repair=1
+
+# Radio
+persist.vendor.radio.add_power_save=1
