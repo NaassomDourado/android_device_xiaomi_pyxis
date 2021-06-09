@@ -20,6 +20,14 @@ TARGET_SCREEN_DENSITY := 440
 # HIDL
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_pyxis
+TARGET_RECOVERY_DEVICE_MODULES := libinit_pyxis
+
+# FM
+BOARD_HAS_QCA_FM_SOC := "cherokee"
+BOARD_HAVE_QCOM_FM := true
+
 # Kernel
 TARGET_KERNEL_CONFIG := pyxis_defconfig
 
