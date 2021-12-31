@@ -1,6 +1,5 @@
 /*
    Copyright (c) 2014, The Linux Foundation. All rights reserved.
-   Copyright (C) 2021 The LineageOS Project.
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -26,70 +25,47 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <vector>
-
-#include <android-base/properties.h>
+#include <stdlib.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
-#include <sys/sysinfo.h>
+#include <android-base/properties.h>
+#include "property_service.h"
+#include "vendor_init.h"
 
-using android::base::GetProperty;
-using std::string;
+using ::android::base::SetProperty;
 
-void property_override(char const prop[], char const value[], bool add = true) {
-    prop_info* pi;
+void property_override(char const prop[], char const value[])
+{
+    prop_info *pi;
 
-    pi = (prop_info*)__system_property_find(prop);
+    pi = (prop_info*) __system_property_find(prop);
     if (pi)
         __system_property_update(pi, value, strlen(value));
-    else if (add)
+    else
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
-std::vector<std::string> ro_props_default_source_order = {
-        "", "bootimage.", "odm.", "product.", "system.", "system_ext.", "vendor.",
-};
+void property_override_dual(char const system_prop[], char const vendor_prop[],
+    char const value[])
+{
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
+}
 
-void set_ro_build_prop(const std::string& prop, const std::string& value) {
-    for (const auto& source : ro_props_default_source_order) {
-        auto prop_name = "ro." + source + "build." + prop;
-        if (source == "")
-            property_override(prop_name.c_str(), value.c_str());
-        else
-            property_override(prop_name.c_str(), value.c_str(), false);
-    }
-};
-
-void set_ro_product_prop(const std::string& prop, const std::string& value) {
-    for (const auto& source : ro_props_default_source_order) {
-        auto prop_name = "ro.product." + source + prop;
-        property_override(prop_name.c_str(), value.c_str(), false);
-    }
-};
-
-void vendor_load_properties() {
-
-    string hardware_revision;
-    hardware_revision = GetProperty("ro.boot.hwversion", "UNKNOWN");
-
-    string model;
-    string device;
-    string fingerprint;
-    string description;
-
-        model = "Mi 9 Lite";
-        device = "pyxis";
-        fingerprint = "Xiaomi/pyxis/pyxis:11/RKQ1.200826.002/V12.5.1.0.RFCCNXM:user/release-keys";
-        description = "pyxis-user 11 RKQ1.200826.002 V12.5.1.0.RFCCNXM release-keys";
-
-    // SafetyNet workaround
+void vendor_load_properties()
+{
+    property_override("ro.build.description","redfin-user 12 SQ1A.211205.008 7888514 release-keys");
+    property_override("ro.bootimage.build.fingerprint","google/redfin/redfin:12/SQ1A.211205.008/7888514:user/release-keys");
+    property_override("ro.build.fingerprint","google/redfin/redfin:12/SQ1A.211205.008/7888514:user/release-keys");
+    property_override("ro.odm.build.fingerprint","google/redfin/redfin:12/SQ1A.211205.008/7888514:user/release-keys");
+    property_override("ro.product.build.fingerprint","google/redfin/redfin:12/SQ1A.211205.008/7888514:user/release-keys");
+    property_override("ro.system.build.fingerprint","google/redfin/redfin:12/SQ1A.211205.008/7888514:user/release-keys");
+    property_override("ro.system_ext.build.fingerprint","google/redfin/redfin:12/SQ1A.211205.008/7888514:user/release-keys");
+    property_override("ro.vendor.build.fingerprint","google/redfin/redfin:12/SQ1A.211205.008/7888514:user/release-keys");
+    property_override("ro.oem_unlock_supported", "0");
     property_override("ro.boot.verifiedbootstate", "green");
-    fingerprint = "google/redfin/redfin:12/SQ1A.211205.008/7888514:user/release-keys";
-
-    set_ro_build_prop("fingerprint", fingerprint);
-    set_ro_product_prop("device", device);
-    set_ro_product_prop("model", model);
-    property_override("ro.build.description", description.c_str());
-    property_override("ro.boot.hardware.revision", hardware_revision.c_str());
+    property_override("ro.boot.flash.locked", "1");
+    property_override("ro.boot.veritymode", "enforcing");
+    property_override("ro.boot.vbmeta.device_state", "locked");
 }
