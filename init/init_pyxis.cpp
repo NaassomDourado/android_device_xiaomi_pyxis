@@ -77,15 +77,15 @@ void vendor_load_properties() {
     string device;
     string fingerprint;
     string description;
-    
+
         model = "Mi 9 Lite";
         device = "pyxis";
         fingerprint = "Xiaomi/pyxis/pyxis:11/RKQ1.200826.002/V12.5.1.0.RFCCNXM:user/release-keys";
         description = "pyxis-user 11 RKQ1.200826.002 V12.5.1.0.RFCCNXM release-keys";
-        
+
     // SafetyNet workaround
     property_override("ro.boot.verifiedbootstate", "green");
-    fingerprint = "google/sunfish/sunfish:11/RQ2A.210505.002/7246365:user/release-keys";
+    fingerprint = "google/redfin/redfin:12/SQ1A.211205.008/7888514:user/release-keys";
 
     set_ro_build_prop("fingerprint", fingerprint);
     set_ro_product_prop("device", device);
@@ -93,4 +93,3 @@ void vendor_load_properties() {
     property_override("ro.build.description", description.c_str());
     property_override("ro.boot.hardware.revision", hardware_revision.c_str());
 }
-
