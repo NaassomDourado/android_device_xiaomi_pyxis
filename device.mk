@@ -65,6 +65,9 @@ PRODUCT_COPY_FILES += \
 # ConsumerIR
 TARGET_HAS_IR := true
 
+# Camera
+$(call inherit-product-if-exists, vendor/miui/miui.mk)
+
 # Device fstab
 PRODUCT_PACKAGES += \
     fstab.qcom
