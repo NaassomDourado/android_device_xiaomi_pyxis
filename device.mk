@@ -16,6 +16,9 @@ $(call inherit-product-if-exists, vendor/xiaomi/pyxis/pyxis-vendor.mk)
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
+# Camera
+$(call inherit-product, vendor/miuicamera/config.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \

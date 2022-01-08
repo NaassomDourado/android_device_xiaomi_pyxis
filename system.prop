@@ -3,6 +3,14 @@ persist.camera.cfa.thres.front=0
 persist.camera.cfa.thres.rear=200
 persist.vendor.camera.enableAdvanceFeatures=0x3E7
 persist.vendor.camera.multicam=TRUE
+persist.vendor.camera.privapp.list=com.android.camera
+persist.vendor.camera.picturesize.limit.enable=false
+ro.miui.notch=1
+ro.miui.ui.version.code=11
+ro.miui.region=CN
+ro.miui.build.region=cn
+ro.boot.camera.config=_pro
+ro.com.google.lens.oem_camera_package=com.android.camera
 
 # NFC
 ro.nfc.port=I2C
