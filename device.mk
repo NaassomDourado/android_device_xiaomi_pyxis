@@ -75,6 +75,13 @@ BOARD_HAVE_QCOM_FM := true
 # NFC
 TARGET_HAS_NFC := true
 
+# RIL A12
+PRODUCT_PACKAGES += \
+    android.hardware.radio@1.6.vendor \
+    android.hardware.radio.config@1.3.vendor \
+    android.hardware.radio.deprecated@1.0.vendor \
+    android.hardware.secure_element@1.2.vendor
+
 # Secure element
 PRODUCT_PACKAGES += \
     SecureElement
