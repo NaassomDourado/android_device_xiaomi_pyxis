@@ -19,3 +19,7 @@ ro.vendor.audio.soundtrigger.lowpower=false
 # NFC
 ro.se.type=HCE,UICC
 ro.vendor.nfc.repair=1
+
+# Chipset
+ro.soc.manufacturer=Qualcomm
+ro.soc.model=SDM710
