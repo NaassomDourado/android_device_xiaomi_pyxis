@@ -21,5 +21,8 @@
     <!--<dimen name="rounded_corner_content_padding">40px</dimen> -->
     <dimen name="rounded_corner_content_padding">16dp</dimen>
     <dimen name="status_bar_extra_padding">6dp</dimen>
+	
+    <!-- Recognizing fingerprint animation -->
+    <dimen name="udfps_animation_offset">40dp</dimen>
 
 </resources>
