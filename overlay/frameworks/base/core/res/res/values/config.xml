@@ -170,4 +170,7 @@
 	
     <!-- Whether the device supports Smart Pixels -->
     <bool name="config_supportSmartPixels">true</bool>
+	
+    <!-- Whether to use light sensor to evaluate pocket state -->
+    <bool name="config_pocketUseLightSensor">false</bool>
 </resources>
