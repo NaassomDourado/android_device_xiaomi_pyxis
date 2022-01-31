@@ -23,3 +23,6 @@ ro.vendor.nfc.repair=1
 # Chipset
 ro.soc.manufacturer=Qualcomm
 ro.soc.model=SDM710
+
+# Radio
+persist.vendor.radio.add_power_save=1
