@@ -67,6 +67,8 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 TARGET_HAS_FOD := true
+TARGET_HAS_UDFPS := true
+EXTRA_UDFPS_ANIMATIONS := true
 
 PRODUCT_PACKAGES += \
     vendor.goodix.hardware.biometrics.fingerprint@2.1.vendor:64 \
