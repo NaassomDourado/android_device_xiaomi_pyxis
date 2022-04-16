@@ -1,24 +1,6 @@
 # Audio
-ro.vendor.audio.game.effect=true
-ro.vendor.audio.voice.volume.boost=manual
-vendor.audio.feature.compr_voip.enable=false
-vendor.voice.path.for.pcm.voip=false
-
-# Crypto
-ro.crypto.volume.filenames_mode=aes-256-cts
-
-# Fingerprint
-persist.vendor.sys.fp.fod.location.X_Y=445,1910
-persist.vendor.sys.fp.fod.size.width_height=190,190
-ro.hardware.fp.fod=true
-
-# Listen
 ro.vendor.audio.soundtrigger=xiaomi
 ro.vendor.audio.soundtrigger.lowpower=false
 
-# NFC
-ro.se.type=HCE,UICC
-ro.vendor.nfc.repair=1
-
-# Radio
-persist.vendor.radio.add_power_save=1
+# Camera
+persist.vendor.camera.privapp.list=com.android.camera
