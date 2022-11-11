@@ -52,9 +52,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
     $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml
 
-# Camera
-$(call inherit-product, vendor/miuicamera/config.mk)
-
 # ConsumerIR
 TARGET_HAS_IR := true
 
@@ -76,7 +73,7 @@ PRODUCT_PACKAGES += \
 		android.hardware.biometrics.fingerprint@2.3.vendor
 
 PRODUCT_COPY_FILES += \
-		frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
+		frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml		
 
 # FM
 BOARD_HAVE_QCOM_FM := true
